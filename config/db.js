@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
 function connectDb() {
-    mongoose.connect("mongodb://localhost/workout", {
-        useNewUrlParser: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true,
+    mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/workout", 
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
     }).then(function () {
         console.log("Connected succesfully")
 
